@@ -94,7 +94,26 @@ public class AddressBook {
             exception.printStackTrace();
         }
     }
+    public static void countByCity() {
+        /**
+         * In this method read the of employee payroll service database print the salary details
+         */
+        int count = 0;
+        try {
+            Connection connection = DriverManager.getConnection(jdbc, userName, password);
+            String query = "select count(city) from AddressBook where city = 'Titwala'";
+            PreparedStatement prepare = connection.prepareStatement(query);
+            ResultSet result = prepare.executeQuery();
+            while (result.next()) {
+                count = result.getInt(1);
+            }
+            System.out.println("count of city = " + count);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        dateInRange();
+        countByCity();
     }
 }
